@@ -1,28 +1,31 @@
-import { Route, Switch } from 'wouter';
-import { ThemeProvider } from '@/app/components/theme-provider';
-import { AppProvider } from '@/app/context/AppContext';
-import { Layout } from '@/app/components/layout';
-import { Dashboard } from '@/app/components/dashboard';
-import { Profile } from '@/app/components/profile';
-import { GroupPage } from '@/app/components/group-page';
-import { Toaster } from '@/app/components/ui/sonner';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from 'next-themes';
+import { Header } from '@/app/components/Header';
+import { HomePage } from '@/app/components/HomePage';
+import { ProjectsPage } from '@/app/components/ProjectsPage';
+import { ProjectDetailPage } from '@/app/components/ProjectDetailPage';
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppProvider>
-        <Layout>
-          <Switch>
-            <Route path="/" component={Dashboard} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/group/:id">
-              {(params) => <GroupPage params={params} />}
-            </Route>
-            <Route>404 - Страница не найдена</Route>
-          </Switch>
-        </Layout>
-        <Toaster />
-      </AppProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/projects/:id" element={<ProjectDetailPage />} />
+            </Routes>
+          </main>
+          
+          <footer className="border-t border-border py-8 px-4">
+            <div className="container mx-auto text-center text-muted-foreground">
+              <p>© 2025 Codify. Все права защищены.</p>
+            </div>
+          </footer>
+        </div>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
