@@ -1,0 +1,26 @@
+.adress{
+    color: white;
+}
+.club
+{
+    color: white;
+}
+.text-logo {
+  font-family: 'Montserrat Alternates', sans-serif ;
+  font-weight: 900 ;
+  font-style: italic ;
+  transform: skew(-8deg) ;
+  letter-spacing: -1px ;
+  font-size: 34px ;
+  color: white 
+}
+
+
+.box{
+  width: 1500px;
+  margin: 0 auto;
+}
+
+.text{
+  width: 400px;
+}

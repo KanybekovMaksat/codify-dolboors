@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Magnat-Fitness</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-gray-100">
+
+
+  <div class="w-full bg-gray-800 text-white text-sm">
+<div class="max-w-7xl mx-auto flex justify-between items-center py-2 px-4">
+<span>📍 Бишкек</span>
+<a href="tel:+996500000000" class="font-semibold hover:text-red-400 transition">+996 500 000 000</a>
+    </div>
+  </div>
+
+  
+  <div class="navbar bg-red-600 shadow-md text-white">
+<div class="navbar-start">
+<div class="dropdown">
+<button tabindex="0" class="btn btn-ghost lg:hidden">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+ </svg>
+</button>
+
+<ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow">
+<li><a href="./fitness.html">Фитнес-услуги</a></li>
+<li><a href="./club.html">Клубы</a></li>
+<li><a href="./membership.html">Виды членства</a></li>
+<li><a href="./coach.html">Тренеры</a></li>
+<li><a href="">Новости</a></li>
+<li><a href="https://www.google.com/maps/place/%D0%A4%D0%B8%D1%82%D0%BD%D0%B5%D1%81-%D0%BA%D0%BB%D1%83%D0%B1+World+Class+Bishkek">Адрес</a></li>
+ </ul>
+</div>
+<a href="./hero.html" class="text-logo text-xl">Magnat-Fitness</a>
+</div>
+
+  
+<div class="navbar-center hidden lg:flex">
+<ul class="menu menu-horizontal px-1 text-lg gap-6">
+<li><a href="./fitness.html" class="hover:text-gray-200">Фитнес-услуги</a></li>
+<li><a href="./club.html" class="hover:text-gray-200">Клубы</a></li>
+<li><a href="./membership.html"class="hover:text-gray-200">Виды членства</a></li>
+<li><a href="./coach.html" class="hover:text-gray-200">Тренеры</a></li>
+<li><a href="#" class="hover:text-gray-200">Новости</a></li>
+<li><a href="https://www.google.com/maps/place/%D0%A4%D0%B8%D1%82%D0%BD%D0%B5%D1%81-%D0%BA%D0%BB%D1%83%D0%B1+World+Class+Bishkek">Адрес</a></li>
+  </ul>
+  </div>
+  </div>
+
+  
+<div class="navbar-center hidden lg:flex">
+<ul class="menu menu-horizontal px-1 text-lg gap-6">
+<li><a href="./fitness.html" class="hover:text-gray-200">Фитнес-услуги</a></li>
+    <li><a href="./club.html" class="hover:text-gray-200">Клубы</a></li>
+  <li><a href="#" class="hover:text-gray-200">Тренеры</a></li>
+  <li><a href="#" class="hover:text-gray-200">Новости</a></li>
+   <li><a href="https://www.google.com/maps/place/%D0%A4%D0%B8%D1%82%D0%BD%D0%B5%D1%81-%D0%BA%D0%BB%D1%83%D0%B1+World+Class+Bishkek">Адрес</a></li>
+  </ul>
+  </div>
+  </div>
+    
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-6">
+
+ 
+<div class="md:w-1/2 bg-white p-6 rounded-xl shadow flex flex-col justify-start">
+<h2 class="text-2xl font-bold mb-4">Членство в Magnat-Fitness</h2>
+<p class="mb-2">Приобретая клубную карту, вы становитесь членом клуба Magnat-Fitness со всеми привилегиями.</p>
+<p class="mb-2">Свободно посещаете тренажерный зал, бассейн, студии танцев, боевых искусств и йоги, а также более 50 групповых программ: Les Mills, пилатес, антигравити-йога, силовой, функциональный и кардиотренинг.</p>
+<p class="mb-2">Доступ к спортивной и светской жизни Magnat-Fitness, тематическим фитнес-турам и занятиям Outdoor.</p>
+</div>
+
+  
+<div class="md:w-1/2 bg-white p-6 rounded-xl shadow">
+<h2 class="text-2xl font-bold mb-4">Заполните форму</h2>
+<form action="/submit" method="POST" class="space-y-4">
+<input type="text" name="name" placeholder="Ваше имя" class="w-full border p-2 rounded" required>
+ <input type="email" name="email" placeholder="Email" class="w-full border p-2 rounded" required>
+<input type="text" name="phone" placeholder="Номер телефона" class="w-full border p-2 rounded" required>
+<select name="membership" class="w-full border p-2 rounded" required>
+<option value="">Выберите тип карты</option>
+<option value="individual">Индивидуальная</option>
+<option value="daily">Дневная</option>
+<option value="vip">VIP</option>
+<option value="v">Корпоративная</option>
+<option value="Teen’s">Teen’s</option>
+</select>
+ <button type="submit" class="w-full bg-red-600 text-white p-2 rounded hover:bg-red-700 transition">Отправить</button>
+</form>
+</div>
+
+  </div>
+</section>
+
+</body>
+</html>
