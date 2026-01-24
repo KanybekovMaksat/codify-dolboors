@@ -50,15 +50,12 @@ export default function HeroSection({ project }: HeroSectionProps) {
               Открыть проект
             </a>
 
-            <button className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-500/30 hover:border-white/50 transition-all">
-              <BookOpen className="w-5 h-5" />
-              Записаться на курс
-            </button>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+      {/* <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div> */}
     </section>
+    
   );
 }

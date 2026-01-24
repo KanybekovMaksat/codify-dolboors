@@ -1,5 +1,6 @@
 import { ExternalLink, Calendar, User } from 'lucide-react';
 import { Project } from '../types/project';
+import { Link } from 'react-router-dom';
 
 interface ProjectCardProps {
   project: Project;
@@ -87,10 +88,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span>{formatDate(project.date)}</span>
           </div>
 
-          <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors group/btn">
+          <Link to="/project" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors group/btn">
             Смотреть проект
             <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
