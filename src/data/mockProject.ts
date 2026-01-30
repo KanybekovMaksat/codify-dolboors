@@ -77,7 +77,7 @@ export const mockProject= {
     },
   },
 
-  projectUrl: 'https://codify-dolboors.twc.net/projects/asema/index.html',
+  projectUrl: 'https://codify-dolboors.vercel.app/projects/asema/index.html',
   structure: {
     folders: [
       {
