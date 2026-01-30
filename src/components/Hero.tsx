@@ -12,7 +12,7 @@ export function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div className="text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Финальные проекты студентов{' '} <br />
+            Финальные проекты студентов <br />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Codify Dolboor
             </span>
@@ -22,13 +22,13 @@ export function Hero() {
             Реальные проекты. Реальные навыки. Реальные результаты.
           </p>
 
-          <button
+          {/* <button
             onClick={scrollToProjects}
             className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             Посмотреть проекты
             <Code2 className="w-5 h-5" />
-          </button>
+          </button> */}
 
           {/* <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">

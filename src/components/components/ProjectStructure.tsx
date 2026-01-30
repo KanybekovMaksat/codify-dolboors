@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FolderOpen, File, Code2, Layout, Zap } from 'lucide-react';
 import { Project } from '../data/mockProject';
+import { CodebaseExplorer } from '../code/codebase-explorer';
 
 interface ProjectStructureProps {
   project: Project;
@@ -65,8 +66,9 @@ export default function ProjectStructure({ project }: ProjectStructureProps) {
             Архитектура и технический стек проекта
           </p>
         </div>
+        <CodebaseExplorer/>
 
-        <div className="max-w-5xl mx-auto">
+        {/* <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap gap-2 mb-8 bg-gray-100 p-2 rounded-xl">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -142,7 +144,7 @@ export default function ProjectStructure({ project }: ProjectStructureProps) {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

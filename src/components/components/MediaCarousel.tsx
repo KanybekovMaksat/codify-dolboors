@@ -1,3 +1,103 @@
+// import { useState } from 'react';
+// import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+// import { Project } from '../data/mockProject';
+
+// interface MediaCarouselProps {
+//   project: Project;
+// }
+
+// export default function MediaCarousel({ project }: MediaCarouselProps) {
+//   const [currentSlide, setCurrentSlide] = useState(0);
+//   const totalSlides = project.images.length + 1;
+
+//   const nextSlide = () => {
+//     setCurrentSlide((prev) => (prev + 1) % totalSlides);
+//   };
+
+//   const prevSlide = () => {
+//     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+//   };
+
+//   return (
+//     <section className="py-16 sm:py-24 bg-gray-50">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="text-center mb-12">
+//           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+//             Взгляните на проект
+//           </h2>
+//           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+//             Видео-презентация и скриншоты работающего приложения
+//           </p>
+//         </div>
+
+//         <div className="relative max-w-5xl mx-auto">
+//           <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+//             {currentSlide === 0 ? (
+//               <div className="relative w-full h-full group">
+//                 <img
+//                   src={project.video.thumbnail}
+//                   alt="Video thumbnail"
+//                   className="w-full h-full object-cover"
+//                 />
+//                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+//                   <button className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+//                     <Play className="w-10 h-10 text-blue-600 ml-1" fill="currentColor" />
+//                   </button>
+//                 </div>
+//                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+//                   <p className="text-white text-lg font-medium">
+//                     Видео-презентация проекта
+//                   </p>
+//                   <p className="text-gray-300 text-sm mt-1">
+//                     {project.student.name} рассказывает о разработке и сложностях
+//                   </p>
+//                 </div>
+//               </div>
+//             ) : (
+//               <img
+//                 src={project.images[currentSlide - 1]}
+//                 alt={`Project slide ${currentSlide}`}
+//                 className="w-full h-full object-cover"
+//               />
+//             )}
+//           </div>
+
+//           <button
+//             onClick={prevSlide}
+//             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+//             aria-label="Previous slide"
+//           >
+//             <ChevronLeft className="w-6 h-6 text-gray-800" />
+//           </button>
+
+//           <button
+//             onClick={nextSlide}
+//             className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+//             aria-label="Next slide"
+//           >
+//             <ChevronRight className="w-6 h-6 text-gray-800" />
+//           </button>
+
+//           <div className="flex justify-center gap-2 mt-6">
+//             {Array.from({ length: totalSlides }).map((_, index) => (
+//               <button
+//                 key={index}
+//                 onClick={() => setCurrentSlide(index)}
+//                 className={`h-2 rounded-full transition-all ${
+//                   currentSlide === index
+//                     ? 'w-8 bg-blue-600'
+//                     : 'w-2 bg-gray-300 hover:bg-gray-400'
+//                 }`}
+//                 aria-label={`Go to slide ${index + 1}`}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { Project } from '../data/mockProject';
@@ -6,89 +106,134 @@ interface MediaCarouselProps {
   project: Project;
 }
 
+type Slide =
+  | { type: 'video'; src: string; poster?: string }
+  | { type: 'image'; src: string }
+  | { type: 'canva'; src: string };
+
 export default function MediaCarousel({ project }: MediaCarouselProps) {
+  // Флаг для запуска видео
+  const [videoPlaying, setVideoPlaying] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = project.images.length + 1;
+
+  const slides: Slide[] = [
+    {
+      type: 'video',
+      src: project.media.video.src,
+      poster: project.media.photos[0] // берем первое фото как постер
+    },
+    ...project.media.photos.map((photo) => ({
+      type: 'image' as const,
+      src: photo
+    })),
+    {
+      type: 'canva',
+      src: project.media.canva.src
+    }
+  ];
+
+  const totalSlides = slides.length;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    setVideoPlaying(false); 
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+    setVideoPlaying(false); 
   };
+
+  const slide = slides[currentSlide];
 
   return (
     <section className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Взгляните на проект
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-            Видео-презентация и скриншоты работающего приложения
+          <p className="text-lg text-gray-600">
+            Видео, фото с выступления и презентация проекта
           </p>
         </div>
 
         <div className="relative max-w-5xl mx-auto">
           <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-            {currentSlide === 0 ? (
-              <div className="relative w-full h-full group">
-                <img
-                  src={project.video.thumbnail}
-                  alt="Video thumbnail"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                  <button className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
-                    <Play className="w-10 h-10 text-blue-600 ml-1" fill="currentColor" />
-                  </button>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <p className="text-white text-lg font-medium">
-                    Видео-презентация проекта
-                  </p>
-                  <p className="text-gray-300 text-sm mt-1">
-                    {project.student.name} рассказывает о разработке и сложностях
-                  </p>
-                </div>
-              </div>
-            ) : (
+            {/* VIDEO SLIDE */}
+            {slide.type === 'video' && (
+              <>
+                {!videoPlaying ? (
+                  <div className="relative w-full h-full">
+                    <img
+                      src={slide.poster}
+                      alt="Video poster"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <button
+                        onClick={() => setVideoPlaying(true)}
+                        className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
+                      >
+                        <Play className="w-10 h-10 text-blue-600 ml-1" fill="currentColor" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <video
+                    src={slide.src}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </>
+            )}
+
+            {/* IMAGE SLIDE */}
+            {slide.type === 'image' && (
               <img
-                src={project.images[currentSlide - 1]}
-                alt={`Project slide ${currentSlide}`}
+                src={slide.src}
+                alt="Фото с выступления"
                 className="w-full h-full object-cover"
               />
             )}
-          </div>
 
+            {/* CANVA SLIDE */}
+            {slide.type === 'canva' && (
+              <iframe
+                src={slide.src}
+                className="w-full h-full"
+                allow="fullscreen"
+              />
+            )}
+          </div>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
-            aria-label="Previous slide"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-800" />
+            <ChevronLeft />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
-            aria-label="Next slide"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
           >
-            <ChevronRight className="w-6 h-6 text-gray-800" />
+            <ChevronRight />
           </button>
 
+          {/* Dots */}
           <div className="flex justify-center gap-2 mt-6">
-            {Array.from({ length: totalSlides }).map((_, index) => (
+            {slides.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
+                onClick={() => {
+                  setCurrentSlide(index);
+                  setVideoPlaying(false); // сбросить видео
+                }}
                 className={`h-2 rounded-full transition-all ${
-                  currentSlide === index
-                    ? 'w-8 bg-blue-600'
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
+                  currentSlide === index ? 'w-8 bg-blue-600' : 'w-2 bg-gray-300'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>

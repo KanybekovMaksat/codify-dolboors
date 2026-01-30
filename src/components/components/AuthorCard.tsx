@@ -9,7 +9,7 @@ export default function AuthorCard({ project }: AuthorCardProps) {
   const { student } = project;
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 to-green-50">
+    <section className="py-12 sm:py-24  bg-gradient-to-br from-blue-50 to-green-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -20,8 +20,8 @@ export default function AuthorCard({ project }: AuthorCardProps) {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className=" mx-auto">
+          <div className="bg-white rounded-3xl  border border-slate-200 overflow-hidden">
             <div className="md:flex">
               <div className="md:w-2/5 bg-gradient-to-br from-blue-600 to-blue-800 p-8 lg:p-12 flex flex-col items-center justify-center text-center text-white">
                 <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mb-6">
@@ -33,7 +33,7 @@ export default function AuthorCard({ project }: AuthorCardProps) {
                 </div>
                 <h3 className="text-3xl font-bold mb-2">{student.name}</h3>
                 <p className="text-xl text-blue-100 mb-6">{student.age} лет</p>
-                <div className="w-full space-y-3">
+                {/* <div className="w-full space-y-3">
                   <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                     <GraduationCap className="w-5 h-5" />
                     <span className="text-sm">{student.course}</span>
@@ -42,7 +42,7 @@ export default function AuthorCard({ project }: AuthorCardProps) {
                     <Clock className="w-5 h-5" />
                     <span className="text-sm">{student.duration}</span>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="md:w-3/5 p-8 lg:p-12">

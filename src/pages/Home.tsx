@@ -67,7 +67,7 @@ function Home() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
         id="projects"
       >
-        <Filters
+        {/* <Filters
           selectedCourse={selectedCourse}
           selectedFormat={selectedFormat}
           selectedLevel={selectedLevel}
@@ -79,14 +79,14 @@ function Home() {
           onAgeRangeChange={setSelectedAgeRange}
           onSortChange={setSortBy}
           onReset={handleReset}
-        />
+        /> */}
 
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-slate-800">
-            Найдено проектов:{' '}
-            <span className="text-blue-600">
+            Проекты студентов:
+            {/* <span className="text-blue-600">
               {filteredAndSortedProjects.length}
-            </span>
+            </span> */}
           </h2>
         </div>
 
@@ -116,7 +116,10 @@ function Home() {
       </main>
 
       <footer className="bg-slate-900 text-white py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className='text-center text-slate-400'>
+        Сopyright © 2026 Codify. Все права защищены. 
+        </p>
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold mb-3">
             Готовы создать свой проект?
           </h3>
@@ -127,7 +130,7 @@ function Home() {
           <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-3 rounded-full transition-all transform hover:scale-105">
             Записаться на курс
           </button>
-        </div>
+        </div> */}
       </footer>
     </div>
   );

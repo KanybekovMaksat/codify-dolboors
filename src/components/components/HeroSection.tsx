@@ -1,5 +1,5 @@
 import { ExternalLink, BookOpen } from 'lucide-react';
-import { Project } from '../data/mockProject';
+import { Project } from '../../data/mockProject';
 
 interface HeroSectionProps {
   project: Project;
@@ -9,7 +9,7 @@ export default function HeroSection({ project }: HeroSectionProps) {
   return (
     <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute inset-0 bg-[url('/projects/asema/img/image1.png')] bg-cover bg-center opacity-10"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="text-center space-y-8">
@@ -32,11 +32,6 @@ export default function HeroSection({ project }: HeroSectionProps) {
               <span className="text-blue-200">{project.student.age} лет</span>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-blue-200">{project.student.course}</span>
-              <span className="text-blue-200">•</span>
-              <span className="text-blue-200">{project.student.duration}</span>
-            </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
