@@ -42,15 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.course}
           </span>
         </div>
-        <div className="absolute bottom-3 left-3">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${
-              levelBadgeColors[project.level]
-            }`}
-          >
-            {project.level}
-          </span>
-        </div>
+
       </div>
 
       <div className="p-6">
@@ -71,7 +63,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        {/* <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech) => (
             <span
               key={tech}
@@ -80,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {tech}
             </span>
           ))}
-        </div>
+        </div> */}
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <div className="flex items-center gap-1 text-xs text-gray-500">

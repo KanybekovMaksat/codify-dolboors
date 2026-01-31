@@ -321,10 +321,10 @@ export function CodebaseExplorer() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-8">
+    <div className="min-h-screen ">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1 p-0 overflow-hidden shadow-lg">
+          <div className="lg:col-span-1 p-0 overflow-hidden border border-slate-300 rounded">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4">
               <div className="flex items-center gap-2 text-white">
                 <FileText className="w-5 h-5" />
@@ -345,7 +345,7 @@ export function CodebaseExplorer() {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-2 p-6 shadow-lg">
+          <div className="lg:col-span-2 p-6  border border-slate-300 rounded">
             {selectedFile ? (
               <div className="h-[600px]  pr-4">
                 <CodeViewer file={selectedFile} />
@@ -361,7 +361,7 @@ export function CodebaseExplorer() {
             )}
           </div>
         </div>
-        <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+        {/* <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
               <Sparkles className="w-6 h-6 text-white" />
@@ -376,7 +376,7 @@ export function CodebaseExplorer() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

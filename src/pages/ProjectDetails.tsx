@@ -18,7 +18,7 @@ export default function ProjectDetails() {
       <AuthorCard project={mockProject} />
       <ProjectLinkCTA project={mockProject} />
       <ProjectStructure project={mockProject} />
-      <SkillsSection project={mockProject} />
+      {/* <SkillsSection project={mockProject} /> */}
       <FinalCTA project={mockProject} />
     </div>
   );
